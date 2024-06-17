@@ -97,11 +97,11 @@ return require("packer").startup(function(use)
 				shadow_offset_x = 0,
 				shadow_offset_y = 0,
 
-				background = "#000f",
-				pad_vert = 100,
-				pad_horiz = 100,
+				background = "#fff0",
+				pad_vert = 0,
+				pad_horiz = 0,
 
-				no_line_number = false,
+				no_line_number = true,
 
 				window_title = function()
 					return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()), ":.")
