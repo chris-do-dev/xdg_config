@@ -12,20 +12,50 @@ contexts:
     - match: '^([A-Za-z]+(?=([\=][\-]?)))'
       scope: keyword.other.service
       push: after_equals
+
     - match: '^\[[A-Za-z]+\]'
       scope: entity.name.type.service
+
     - match: '(\\\w)?'
       scope: entity.name.service
+
     - match: '\\'
       scope: constant.character.escape
+
+    - match: '^\s+[^{\\]+'
+      scope: string.unquoted.service
+      push: templated_command
+
     - match: ^(#).*$\n?
       scope: comment.line.service
       captures:
         1: punctuation.definition.comment.service
+
     - match: \b(?i:yes|no|0|1|true|false)\b
       scope: constant.language.boolean.service
+
     - match: '"'
       push: string
+
+  templated_command:
+    - match: '\S+(?={{)'
+      scope: string.unquoted.service
+
+    - match: '{{'
+      scope: string.unquoted.alias.graphql
+      push:
+        - match: '.*}}'
+          scope: string.unquoted.alias.graphql
+          pop: true
+
+    - match: '(?<=}})\S+'
+      scope: string.unquoted.service
+
+    - match: \\
+      scope: constant.character.escape
+
+    - match: $
+      pop: true
 
   comments:
     - match: '#'
@@ -43,6 +73,6 @@ contexts:
       pop: true
 
   after_equals:
-    - match: '(?<=\=).*'
+    - match: '(?<=\=)[a-zA-Z0-9\s/-:\.-]+[^\\]'
       scope: string.unquoted.service
       pop: true
