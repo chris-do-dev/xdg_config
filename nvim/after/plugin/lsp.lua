@@ -15,6 +15,8 @@ require("mason-lspconfig").setup({
 		"dockerls",
 		"jqls",
 		"jsonls",
+		"tsserver",
+		"lua_ls",
 	},
 })
 
@@ -24,6 +26,8 @@ local auto_setup_servers = {
 	"dockerls",
 	"jqls",
 	"jsonls",
+	"tsserver",
+	"lua_ls",
 }
 
 local on_attach = lsp.on_attach(function(_, bufnr)
