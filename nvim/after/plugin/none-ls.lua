@@ -15,6 +15,9 @@ local sources = {
 	b.formatting.goimports,
 	b.formatting.goimports_reviser,
 	b.formatting.golines,
+
+	-- typescript
+	b.formatting.prettier,
 }
 
 none_ls.setup({
