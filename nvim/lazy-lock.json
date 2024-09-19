@@ -28,5 +28,5 @@
   "undotree": { "branch": "master", "commit": "78b5241191852ffa9bb5da5ff2ee033160798c3b" },
   "vim-fugitive": { "branch": "master", "commit": "d4877e54cef67f5af4f950935b1ade19ed6b7370" },
   "vim-test": { "branch": "master", "commit": "c090bfd93919888bb0b86e1ab707bc6a3095097f" },
-  "vimux": { "branch": "master", "commit": "b110cd95062f5d83a4cb58b807783d783e1fbcd8" }
+  "vimux": { "branch": "master", "commit": "64df7ce47f16adaa5bc15d07f2d99197524961a9" }
 }
