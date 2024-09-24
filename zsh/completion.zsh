@@ -9,6 +9,8 @@
 # | General |
 # +---------+
 
+_comp_options+=(globdots) # With hidden files
+
 # source ./gambit.zsh
 
 # Load more completions
