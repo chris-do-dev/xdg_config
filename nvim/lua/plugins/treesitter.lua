@@ -1,18 +1,35 @@
 return {
   {
-    'nvim-treesitter/nvim-treesitter',
+    "nvim-treesitter/nvim-treesitter",
     config = function()
-      require'nvim-treesitter.configs'.setup {
+      require("nvim-treesitter.configs").setup({
         -- A list of parser names, or "all" (the five listed parsers should always be installed)
         ensure_installed = {
+          "bash",
+          "diff",
+          "go",
+          "html",
+          "javascript",
+          "jsdoc",
+          "json",
+          "jsonc",
           "lua",
+          "luadoc",
+          "luap",
+          "markdown",
+          "markdown_inline",
+          "printf",
+          "python",
+          "query",
+          "regex",
+          "terraform",
+          "toml",
+          "tsx",
+          "typescript",
           "vim",
           "vimdoc",
-          "query",
-          "terraform",
-          "go",
-          "python",
-          "yaml"
+          "xml",
+          "yaml",
         },
 
         -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -31,7 +48,7 @@ return {
           -- Instead of true it can also be a list of languages
           additional_vim_regex_highlighting = false,
         },
-      }
-    end
-  }
+      })
+    end,
+  },
 }
