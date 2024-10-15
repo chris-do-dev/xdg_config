@@ -5,7 +5,6 @@ return {
     dependencies = {
       "neovim/nvim-lspconfig",
       "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
     },
     config = function()
       local lsp = require("lsp-zero")
@@ -13,26 +12,6 @@ return {
       local util = require("lspconfig/util")
 
       require("lspconfig").intelephense.setup({})
-
-      require("mason").setup({
-        ensure_installed = {
-          "prettierd",
-        },
-      })
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "terraformls",
-          "gopls",
-          "ansiblels",
-          "autotools_ls",
-          "bashls",
-          "dockerls",
-          "jqls",
-          "jsonls",
-          "ts_ls",
-          "lua_ls",
-        },
-      })
 
       local auto_setup_servers = {
         "ansiblels",
