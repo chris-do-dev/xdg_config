@@ -1,9 +1,11 @@
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+export NVM_DIR="${HOME}/.nvm"
+[ -s "${NVM_DIR}/nvm.sh" ] && source "${NVM_DIR}/nvm.sh"
+[ -s "${NVM_DIR}/bash_completion" ] && source "${NVM_DIR}/bash_completion"
 
 autoload -U add-zsh-hook
 load-nvmrc() {
+  [[ -a .nvmrc ]] || return
+
   local nvmrc_path
   nvmrc_path="$(nvm_find_nvmrc)"
 
