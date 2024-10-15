@@ -14,7 +14,11 @@ return {
 
       require("lspconfig").intelephense.setup({})
 
-      require("mason").setup({})
+      require("mason").setup({
+        ensure_installed = {
+          "prettierd",
+        },
+      })
       require("mason-lspconfig").setup({
         ensure_installed = {
           "terraformls",
