@@ -17,6 +17,7 @@ return {
           "lua_ls",
 
           -- DAP
+          "delve",
 
           -- Linter
           "tflint",
