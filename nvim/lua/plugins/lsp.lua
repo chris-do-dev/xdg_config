@@ -49,8 +49,6 @@ return {
         vim.keymap.set("n", "<leader>gh", function()
           vim.lsp.buf.hover()
         end, opts)
-
-        lsp.buffer_autoformat()
       end)
 
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
