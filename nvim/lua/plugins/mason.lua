@@ -48,6 +48,8 @@ return {
           "goimports-reviser",
           "prettierd",
           "prettier",
+          "mdformat",
+          "yq",
         },
       })
     end,
