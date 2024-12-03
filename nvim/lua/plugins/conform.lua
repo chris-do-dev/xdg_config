@@ -35,8 +35,7 @@ return {
 						"prettier",
 					},
 					markdown = {
-						"mdformat",
-						args = { "--wrap 80" },
+						"prettier",
 					},
 					go = {
 						"goimports",
