@@ -19,10 +19,11 @@ return {
 			vim.keymap.set("n", "<F3>", dap.step_into, {})
 			vim.keymap.set("n", "<F4>", dap.step_out, {})
 			vim.keymap.set("n", "<F5>", dap.step_back, {})
+			vim.keymap.set("n", "<F6>", dapui.toggle, {})
+			vim.keymap.set("n", "<F12>", dap.terminate, {})
 			vim.keymap.set("n", "<F13>", dap.restart, {})
 
 			vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, {})
-
 			vim.keymap.set("n", "<leader>dt", dapgo.debug_test, {})
 			vim.keymap.set("n", "<leader>dl", dapgo.debug_last_test, {})
 
