@@ -24,6 +24,13 @@ return {
 		vim.keymap.set("n", "<leader>fcb", builtin.current_buffer_fuzzy_find, {})
 		vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
+		vim.keymap.set("n", "<leader>fp", function()
+			require("telescope.builtin").find_files({
+				search_dirs = { "~/Code" },
+				prompt_title = "Find Project",
+			})
+		end)
+
 		vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 	end,
 }
