@@ -43,3 +43,5 @@ font-family = JetBrains Mono
 # resize-overlay-duration = 4s 200ms
 
 theme = catppuccin-mocha
+
+mouse-hide-while-typing
