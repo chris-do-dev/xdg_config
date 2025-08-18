@@ -8,6 +8,7 @@ return {
 					"bash",
 					"diff",
 					"go",
+					"gitattributes",
 					"html",
 					"javascript",
 					"jsdoc",
