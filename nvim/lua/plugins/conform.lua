@@ -23,26 +23,10 @@ return {
 					lsp_format = "fallback",
 				},
 				formatters_by_ft = {
-					["*"] = {
-						"trim_whitespace",
-						"trim_newlines",
-					},
 					lua = { "stylua" },
-					javascript = {
-						"prettier",
-					},
-					typescript = {
-						"prettier",
-					},
-					markdown = {
-						"prettier",
-					},
-					go = {
-						"goimports",
-						"goimports-reviser",
-						"gofumpt",
-						"golines",
-					},
+					javascript = { "prettier" },
+					typescript = { "prettier" },
+					go = { "goimports", "goimports-reviser", "gofmt" },
 					terraform = { "terraform_fmt" },
 					sh = { "shellcheck" },
 					zsh = { "shellcheck" },
