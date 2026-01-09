@@ -42,8 +42,6 @@ return {
 					"shellcheck",
 
 					-- Formatter
-					"golines",
-					"gofumpt",
 					"goimports",
 					"goimports-reviser",
 					"prettierd",
