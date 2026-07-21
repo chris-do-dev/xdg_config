@@ -19,6 +19,8 @@ return {
 		vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 		vim.keymap.set("n", "<leader>fcb", builtin.current_buffer_fuzzy_find, {})
 		vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
+		vim.keymap.set("n", "<leader>fo", builtin.oldfiles, {})
+		vim.keymap.set("n", "<leader>fm", builtin.marks, {})
 
 		vim.keymap.set("n", "<leader>fp", function()
 			require("telescope.builtin").find_files({

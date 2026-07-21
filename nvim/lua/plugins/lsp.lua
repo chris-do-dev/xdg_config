@@ -1,13 +1,11 @@
 return {
 	{
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v4.x",
+		"neovim/nvim-lspconfig",
 		dependencies = {
-			"neovim/nvim-lspconfig",
 			"williamboman/mason.nvim",
+			"saghen/blink.cmp",
 		},
 		config = function()
-			local lsp = require("lsp-zero")
 			local lspconfig = require("lspconfig")
 			local util = require("lspconfig/util")
 
@@ -22,7 +20,7 @@ return {
 				"ts_ls",
 			}
 
-			local on_attach = lsp.on_attach(function(_, bufnr)
+			local on_attach = function(_, bufnr)
 				local opts = { buffer = bufnr, remap = false }
 
 				vim.keymap.set("n", "gd", function()
@@ -49,9 +47,9 @@ return {
 				vim.keymap.set("n", "<leader>gh", function()
 					vim.lsp.buf.hover()
 				end, opts)
-			end)
+			end
 
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 			function OpenDiagnosticIfNoFloat()
 				for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
@@ -99,15 +97,15 @@ return {
 			lspconfig.autotools_ls.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
-				filetype = { "config", "automake", "make" },
-				root_dur = { "Makefile", "Makefile.*", "*.mk", "Makefile.am", "configure.ac" },
+				filetypes = { "config", "automake", "make" },
+				root_dir = util.root_pattern("Makefile", "Makefile.*", "*.mk", "Makefile.am", "configure.ac"),
 			})
 
 			lspconfig.gopls.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
 				cmd = { "gopls" },
-				filetype = { "go", "gomod", "gowork", "gotmpl" },
+				filetypes = { "go", "gomod", "gowork", "gotmpl" },
 				root_dir = util.root_pattern("go.work", "go.mod", ".git"),
 				settings = {
 					gopls = {
@@ -124,7 +122,7 @@ return {
 
 			lspconfig.terraformls.setup({
 				capabilities = capabilities,
-				filetype = { "tf", "hcl" },
+				filetypes = { "tf", "hcl" },
 				on_attach = function(client, _)
 					client.server_capabilities.semanticTokensProvider = nil
 				end,
