@@ -66,13 +66,12 @@ return {
 				})
 			end
 
-			vim.lsp.handlers["textDocument/publishDiagnostics"] =
-				vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-					virtual_text = false,
-					signs = true,
-					update_in_insert = false,
-					underline = true,
-				})
+			vim.diagnostic.config({
+				virtual_text = false,
+				signs = true,
+				underline = true,
+				update_in_insert = false,
+			})
 
 			-- Show diagnostics under the cursor when holding position
 			vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
