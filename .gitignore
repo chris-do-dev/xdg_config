@@ -4,3 +4,6 @@ asciinema
 packer
 dlv/.dbg_history
 tmux/plugins
+Lidarr
+MusicBrainz
+tmux/*.log
