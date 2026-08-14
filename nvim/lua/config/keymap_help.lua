@@ -54,13 +54,7 @@ local sections = {
 			{ "<leader>fm", "Marks" },
 			{ "<leader>fp", "Find file under ~/Code" },
 			{ "<C-p>", "Git files" },
-		},
-	},
-	{
-		title = "Harpoon",
-		items = {
-			{ "<leader>aa", "Add file to Harpoon list" },
-			{ "<C-e>", "Toggle Harpoon quick menu" },
+			{ "<C-e>", "Marks (quick-pin menu, see below)" },
 		},
 	},
 	{
@@ -122,7 +116,9 @@ local sections = {
 			{ "u <C-r>", "Undo / redo" },
 			{ '"{r}y "{r}p', "Yank / paste to named register" },
 			{ "qa ... q, @a, @@", "Record / play macro" },
-			{ "m{a-z} `{a-z} '{a-z}", "Set mark / jump to mark" },
+			{ "m{a-z}", "Set local mark (per buffer)" },
+			{ "m{A-Z}", "Set global mark (cross-file \"pin\", see <C-e> above)" },
+			{ "`{mark} '{mark}", "Jump to mark (exact position / line)" },
 			{ "<C-o> <C-i>", "Back / forward in jumplist" },
 			{ "/ ? n N", "Search forward / back, repeat" },
 			{ "* #", "Search word under cursor forward / back" },

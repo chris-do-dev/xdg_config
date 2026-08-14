@@ -21,6 +21,9 @@ return {
 		vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 		vim.keymap.set("n", "<leader>fo", builtin.oldfiles, {})
 		vim.keymap.set("n", "<leader>fm", builtin.marks, {})
+		-- Harpoon-style quick menu: pin a file+position with a global
+		-- mark (mA, mB, ...), then jump back in here.
+		vim.keymap.set("n", "<C-e>", builtin.marks, {})
 
 		vim.keymap.set("n", "<leader>fp", function()
 			require("telescope.builtin").find_files({
