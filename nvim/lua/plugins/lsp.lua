@@ -6,19 +6,7 @@ return {
 			"saghen/blink.cmp",
 		},
 		config = function()
-			local lspconfig = require("lspconfig")
-			local util = require("lspconfig/util")
-
-			require("lspconfig").intelephense.setup({})
-
-			local auto_setup_servers = {
-				"ansiblels",
-				"bashls",
-				"dockerls",
-				"jqls",
-				"jsonls",
-				"ts_ls",
-			}
+			local util = require("lspconfig.util")
 
 			local on_attach = function(_, bufnr)
 				local opts = { buffer = bufnr, remap = false }
@@ -50,6 +38,13 @@ return {
 			end
 
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+			-- Shared defaults for every server. Per-server overrides below
+			-- only need to specify what's actually different from this.
+			vim.lsp.config("*", {
+				on_attach = on_attach,
+				capabilities = capabilities,
+			})
 
 			function OpenDiagnosticIfNoFloat()
 				for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
@@ -87,26 +82,15 @@ return {
 				group = "lsp_diagnostics_hold",
 			})
 
-			for _, ls in ipairs(auto_setup_servers) do
-				lspconfig[ls].setup({
-					on_attach = on_attach,
-					capabilities = capabilities,
-				})
-			end
-
-			lspconfig.autotools_ls.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
+			vim.lsp.config("autotools_ls", {
 				filetypes = { "config", "automake", "make" },
-				root_dir = util.root_pattern("Makefile", "Makefile.*", "*.mk", "Makefile.am", "configure.ac"),
+				root_dir = function(bufnr, on_dir)
+					local fname = vim.api.nvim_buf_get_name(bufnr)
+					on_dir(util.root_pattern("Makefile", "Makefile.*", "*.mk", "Makefile.am", "configure.ac")(fname))
+				end,
 			})
 
-			lspconfig.gopls.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-				cmd = { "gopls" },
-				filetypes = { "go", "gomod", "gowork", "gotmpl" },
-				root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+			vim.lsp.config("gopls", {
 				settings = {
 					gopls = {
 						completeUnimported = true,
@@ -120,15 +104,14 @@ return {
 				},
 			})
 
-			lspconfig.terraformls.setup({
-				capabilities = capabilities,
+			vim.lsp.config("terraformls", {
 				filetypes = { "tf", "hcl" },
 				on_attach = function(client, _)
 					client.server_capabilities.semanticTokensProvider = nil
 				end,
 			})
 
-			lspconfig.lua_ls.setup({
+			vim.lsp.config("lua_ls", {
 				settings = {
 					Lua = {
 						format = {
@@ -156,6 +139,20 @@ return {
 						},
 					},
 				},
+			})
+
+			vim.lsp.enable({
+				"intelephense",
+				"ansiblels",
+				"bashls",
+				"dockerls",
+				"jqls",
+				"jsonls",
+				"ts_ls",
+				"autotools_ls",
+				"gopls",
+				"terraformls",
+				"lua_ls",
 			})
 		end,
 	},
