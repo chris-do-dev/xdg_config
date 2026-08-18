@@ -1,0 +1,35 @@
+# Title: Summary, imperative, start upper case, don't end with a period
+# No more than 50 chars. #### 50 chars is here:  #
+# Use a conventional commit
+#Changes relevant to the API or UI:
+#feat: Commits that add, adjust or remove a new feature to the API or UI
+#fix: Commits that fix an API or UI bug of a preceded feat commit
+#refactor: Commits that rewrite or restructure code without altering API or UI behavior
+#perf: Commits are special type of refactor commits that specifically improve performance
+#style: Commits that address code style (e.g., white-space, formatting, missing semi-colons) and do not affect application behavior
+#test: Commits that add missing tests or correct existing ones
+#docs: Commits that exclusively affect documentation
+#build: Commits that affect build-related components such as build tools, dependencies, project version, ...
+#ops: Commits that affect operational aspects like infrastructure (IaC), deployment scripts, CI/CD pipelines, backups, monitoring, or recovery procedures, ...
+#chore: Commits that represent tasks like initial commit, modifying .gitignore, ...
+
+# Remember blank line between title and body.
+
+# Body: Explain *what* and *why* (not *how*). Include task ID (Jira issue).
+# Wrap at 72 chars. ################################## which is here:  #
+
+
+# At the end: Include Co-authored-by for all contributors. 
+# Include at least one empty line before it. Format: 
+# Co-authored-by: name <user@users.noreply.github.com>
+#
+# How to Write a Git Commit Message:
+# https://chris.beams.io/posts/git-commit/
+#
+# 1. Separate subject from body with a blank line
+# 2. Limit the subject line to 50 characters
+# 3. Capitalize the subject line
+# 4. Do not end the subject line with a period
+# 5. Use the imperative mood in the subject line
+# 6. Wrap the body at 72 characters
+# 7. Use the body to explain what and why vs. how
